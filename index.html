@@ -7,6 +7,9 @@
     <meta
       name="description"
       content="みまもるくんのデスクトップアプリをダウンロードできるホームページです。"
+    <meta
+      name="description"
+      content="みまもるくんのデスクトップアプリをダウンロードできるホームページです。"
     />
     <!--
       このファイルはサイトのトップページです。
@@ -16,10 +19,6 @@
       - `downloads/` フォルダは `.gitignore` に入れているためリポジトリには含めません。
     -->
     <link rel="stylesheet" href="./css/index.css" />
-  </head>
-  <body>
-    <header class="hero">
-      <div class="container">
         <p class="eyebrow">Desktop App</p>
         <h1>みまもるくん</h1>
         <p class="lead">
@@ -37,8 +36,8 @@
           </a>
           <!-- 機能セクションへスクロール -->
           <a class="button secondary" href="#features">機能を見る</a>
-          <!-- 同ページ内のアプリ概要セクションへスクロール -->
-          <a class="button secondary" href="#app-overview">アプリの説明</a>
+          <!-- 別ページの説明へ遷移 -->
+          <a class="button secondary" href="app.html">アプリの説明</a>
         </div>
       </div>
     </header>
@@ -64,26 +63,7 @@
         </div>
       </section>
 
-      <!-- アプリ概要（同ページ内表示） -->
-      <section id="app-overview" class="section">
-        <div class="container">
-          <h2>アプリ概要</h2>
-          <p>
-            みまもるくんは、GitHubアカウントで認証し、選択したリポジトリの
-            コミット数やブランチ数を取得してローカルに保存するデスクトップアプリです。
-          </p>
-
-          <h3>主な機能</h3>
-          <ul>
-            <li>GitHub OAuth 認証（Device Flow）</li>
-            <li>リポジトリの登録・管理（最大5件）</li>
-            <li>コミット数・ブランチ数の取得と `github-data.json` への保存</li>
-          </ul>
-
-          <p>詳しいセットアップや開発手順はリポジトリの README を参照してください。</p>
-        </div>
-      </section>
-
+      <!-- アプリ概要は別ページ（app.html）に移動しました -->
       <section class="section download-section">
         <div class="container">
           <h2>すぐ使えるように</h2>
