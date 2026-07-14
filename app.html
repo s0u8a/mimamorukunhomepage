@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>みまもるくん — アプリの説明</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <!--
+      このページは `seisaku2026` リポジトリ内の説明を要約して作成しています。
+      目的：ユーザー向けにアプリの機能や使い方、注意点を分かりやすくまとめる。
+      注意：本ページに認証情報（Client Secret 等）は一切含めないでください。
+    -->
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container">
+        <p class="eyebrow">About</p>
+        <h1>みまもるくん（アプリの説明）</h1>
+        <p class="lead">GitHub のコミット数やブランチ作成回数を取得して記録するデスクトップアプリです。</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <h2>概要（何をするアプリか）</h2>
+          <p>
+            みまもるくんは、あなたの GitHub アカウントで認証した後、選択したリポジトリの
+            コミット数やブランチ情報を取得して、ローカルに JSON ファイルとして保存します。
+            チームの貢献度や活動記録の可視化に便利です。
+          </p>
+
+          <h2>主な機能</h2>
+          <ul>
+            <li>GitHub での OAuth 認証（Device Flow を利用した簡単ログイン）</li>
+            <li>リポジトリを登録・管理（最大5件）</li>
+            <li>選択したリポジトリからコミット数・ブランチ数などを取得し JSON として保存</li>
+            <li>取得データは `github-data.json` というファイル名で保存されます</li>
+          </ul>
+
+          <h2>セットアップ（概要）</h2>
+          <p>
+            開発元の手順に従い、Node.js と GitHub OAuth アプリの設定が必要です。簡単な手順：
+          </p>
+          <ol>
+            <li>リポジトリをクローンして `npm install` を実行</li>
+            <li>GitHub 側で OAuth App を作成し、Client ID / Client Secret を取得</li>
+            <li>ルートに `.env` を作成して `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` を設定</li>
+            <li>`npm run dev` で開発モード起動</li>
+          </ol>
+
+          <h2>使い方（簡単な流れ）</h2>
+          <ol>
+            <li>アプリを起動して「GitHubでログイン」を押す</li>
+            <li>表示されたコードをブラウザの GitHub 認証画面に入力して承認</li>
+            <li>認証後、リポジトリ管理画面で取得対象のリポジトリを選択</li>
+            <li>データを取得して保存ボタンを押すと `github-data.json` が生成される</li>
+          </ol>
+
+          <h2>出力されるデータ形式（例）</h2>
+          <pre>
+{
+  "owner/repo-name": {
+    "commits": {
+      "total": 120,
+      "byUser": { "user1": 80, "user2": 40 }
+    },
+    "branches": { "total": 10, "byUser": { "user1": 6, "user2": 4 } },
+    "fetched_at": "2026-05-29T07:00:00.000Z"
+  }
+}
+          </pre>
+
+          <h2>注意事項</h2>
+          <ul>
+            <li>`.env` に含まれる `GITHUB_CLIENT_SECRET` は絶対に公開リポジトリへプッシュしないでください。</li>
+            <li>`github-data.json` にはリポジトリ情報が含まれるため取扱に注意してください。</li>
+            <li>本ページは説明目的です。本体のビルドや配布は公式リポジトリの手順に従ってください。</li>
+          </ul>
+
+          <p>
+            さらに詳しい実装や開発手順は元のリポジトリの README を参照してください。
+            （`seisaku2026/mimamorukun/README.md`）
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>© 2026 mimamorukun</p>
+        <p><a href="index.html">トップへ戻る</a></p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
