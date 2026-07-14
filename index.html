@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>みまもるくん | Desktop App</title>
+    <meta
+      name="description"
+      content="みまもるくんのデスクトップアプリをダウンロードできるホームページです。"
+    />
+    <!--
+      このファイルはサイトのトップページです。
+      - CSS は `css/index.css` に分離しています。
+      - ダウンロードリンクはローカルの `downloads/mimamorukun-win.zip` を指しています。
+        実運用では GitHub Releases や外部ストレージに本体を置くことを推奨します。
+      - `downloads/` フォルダは `.gitignore` に入れているためリポジトリには含めません。
+    -->
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container">
+        <p class="eyebrow">Desktop App</p>
+        <h1>みまもるくん</h1>
+        <p class="lead">
+          GitHubのリポジトリを選んで、コミットやブランチ情報をまとめて取得できる
+          デスクトップアプリです。
+        </p>
+        <!-- 操作ボタン -->
+        <div class="actions">
+          <!--
+            ローカルのサンプルZIPを指すダウンロードボタン。
+            実際の配布物は GitHub Releases 等に置いてください。
+          -->
+          <a class="button primary" href="downloads/mimamorukun-win.zip" download>
+            Windows版をダウンロード
+          </a>
+          <!-- 機能セクションへスクロール -->
+          <a class="button secondary" href="#features">機能を見る</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="features" class="section">
+        <div class="container">
+          <h2>できること</h2>
+          <div class="cards">
+            <article class="card">
+              <h3>GitHubログイン</h3>
+              <p>認証コードを使って、GitHubアカウントに安全に接続できます。</p>
+            </article>
+            <article class="card">
+              <h3>リポジトリ管理</h3>
+              <p>登録したいリポジトリを選んで管理し、最大5件まで保存できます。</p>
+            </article>
+            <article class="card">
+              <h3>データ取得</h3>
+              <p>選択したリポジトリのコミット・ブランチ情報をJSONとして保存できます。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section download-section">
+        <div class="container">
+          <h2>すぐ使えるように</h2>
+          <p>
+            ZIPファイルを展開したら、アプリ本体を起動してください。<br />
+            Windows 10 / 11 で利用できます。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>© 2026 mimamorukun</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
