@@ -82,6 +82,20 @@ body {
   background: rgba(255,255,255,0.08);
 }
 
+.button.primary-blue {
+  background: var(--primary);
+  color: white;
+}
+
+.button.primary-blue:hover {
+  background: var(--primary-dark);
+}
+
+.center-actions {
+  text-align: center;
+  margin: 32px 0;
+}
+
 .section {
   padding: 72px 0;
 }
