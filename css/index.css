@@ -190,6 +190,18 @@ footer {
   }
 }
 
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 /* 背景に浮かぶ泡 */
 .bubbles {
   position: fixed;
@@ -342,7 +354,8 @@ body.is-loading {
 }
 
 body.is-loading .hero,
-body.is-loading .screenshot-block {
+body.is-loading .screenshot-block,
+body.is-loading .fade-in {
   animation-play-state: paused;
 }
 
