@@ -11,9 +11,8 @@
     <!--
       このファイルはサイトのトップページです。
       - CSS は `css/index.css` に分離しています。
-      - ダウンロードリンクはローカルの `downloads/mimamorukun-win.zip` を指しています。
-        実運用では GitHub Releases や外部ストレージに本体を置くことを推奨します。
-      - `downloads/` フォルダは `.gitignore` に入れているためリポジトリには含めません。
+      - ダウンロードボタンは download.html へ遷移し、実際のZIPへのリンクは
+        そちらのページに置いています。
     -->
     <link rel="stylesheet" href="./css/index.css" />
   </head>
@@ -52,10 +51,10 @@
         <!-- 操作ボタン -->
         <div class="actions">
           <!--
-            ローカルのサンプルZIPを指すダウンロードボタン。
-            実際の配布物は GitHub Releases 等に置いてください。
+            ダウンロード専用ページ（download.html）へ遷移。
+            実際のZIPへのリンクはそちらに置いています。
           -->
-          <a class="button primary" href="downloads/mimamorukun-win.zip" download>
+          <a class="button primary" href="download.html">
             Windows版をダウンロード
           </a>
           <!-- 機能セクションへスクロール -->
