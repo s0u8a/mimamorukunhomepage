@@ -11,7 +11,30 @@
       注意：本ページに認証情報（Client Secret 等）は一切含めないでください。
     -->
   </head>
-  <body>
+  <body class="is-loading">
+    <div class="loading-screen" id="loadingScreen">
+      <img src="./images/mimamorukun.png" alt="" class="loading-logo">
+      <div class="loading-gauge">
+        <div class="loading-gauge-fill" id="loadingGaugeFill"></div>
+      </div>
+      <p class="loading-text">
+        Now Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+      </p>
+    </div>
+
+    <div class="bubbles" aria-hidden="true">
+      <div class="bubble" style="left:5%; width:60px; height:60px; animation-duration:18s; animation-delay:0s;"></div>
+      <div class="bubble" style="left:15%; width:30px; height:30px; animation-duration:12s; animation-delay:2s;"></div>
+      <div class="bubble" style="left:28%; width:90px; height:90px; animation-duration:22s; animation-delay:1s;"></div>
+      <div class="bubble" style="left:40%; width:45px; height:45px; animation-duration:15s; animation-delay:6s;"></div>
+      <div class="bubble" style="left:52%; width:110px; height:110px; animation-duration:26s; animation-delay:3s;"></div>
+      <div class="bubble" style="left:65%; width:35px; height:35px; animation-duration:13s; animation-delay:8s;"></div>
+      <div class="bubble" style="left:75%; width:70px; height:70px; animation-duration:20s; animation-delay:5s;"></div>
+      <div class="bubble" style="left:85%; width:50px; height:50px; animation-duration:17s; animation-delay:9s;"></div>
+      <div class="bubble" style="left:92%; width:28px; height:28px; animation-duration:11s; animation-delay:4s;"></div>
+      <div class="bubble" style="left:35%; width:22px; height:22px; animation-duration:10s; animation-delay:11s;"></div>
+    </div>
+
     <header class="hero">
       <div class="container">
         <p class="eyebrow">About</p>
@@ -24,7 +47,7 @@
     </header>
 
     <main>
-      <section class="section">
+      <section class="section fade-in" style="animation-delay: 0.2s;">
         <div class="container">
           <h2>概要（何をするアプリか）</h2>
           <p>
@@ -98,6 +121,73 @@
       </div>
     </footer>
 
+    <button type="button" class="to-top" id="toTopButton" aria-label="ページの一番上に戻る">
+      <img src="./images/mimamorukun.png" alt="" style="width: 50px; height: 50px;">
+    </button>
+
     <script src="script.js"></script>
+    <script>
+      (function () {
+        const loadingScreen = document.getElementById("loadingScreen");
+        const gaugeFill = document.getElementById("loadingGaugeFill");
+        const minDisplayTime = 900; // ms、これより短い時間では消えない
+        const startTime = Date.now();
+
+        // 読み込み中はゆっくり90%まで、完了したら一気に100%へ
+        requestAnimationFrame(function () {
+          gaugeFill.style.transition = "width " + minDisplayTime + "ms ease-out";
+          gaugeFill.style.width = "90%";
+        });
+
+        function hideLoadingScreen() {
+          const elapsed = Date.now() - startTime;
+          const wait = Math.max(minDisplayTime - elapsed, 0);
+
+          setTimeout(function () {
+            gaugeFill.style.transition = "width 0.3s ease";
+            gaugeFill.style.width = "100%";
+
+            setTimeout(function () {
+              loadingScreen.classList.add("hidden");
+              document.body.classList.remove("is-loading");
+
+              loadingScreen.addEventListener(
+                "transitionend",
+                function () {
+                  loadingScreen.style.display = "none";
+                },
+                { once: true }
+              );
+            }, 300);
+          }, wait);
+        }
+
+        if (document.readyState === "complete") {
+          hideLoadingScreen();
+        } else {
+          window.addEventListener("load", hideLoadingScreen);
+        }
+      })();
+    </script>
+    <script>
+      (function () {
+        const toTopButton = document.getElementById("toTopButton");
+
+        function updateVisibility() {
+          if (window.scrollY > 200) {
+            toTopButton.classList.add("visible");
+          } else {
+            toTopButton.classList.remove("visible");
+          }
+        }
+
+        toTopButton.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        window.addEventListener("scroll", updateVisibility, { passive: true });
+        updateVisibility();
+      })();
+    </script>
   </body>
 </html>
